@@ -13,9 +13,8 @@ export function useItems() {
 
 export function useItem(id: number) {
   return useQuery({
-    queryKey: ITEMS_KEY,
-    queryFn: api.getAllItems,
-    select: (items) => items.find((item) => item.id === id),
+    queryKey: ['items', id],
+    queryFn: () => api.getItemById(id),
   });
 }
 
